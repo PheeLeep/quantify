@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Quantify | Products</title>
+
+    <!-- Custom fonts for this template-->
+    <link
+      href="vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.css" rel="stylesheet" />
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul
+        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+      >
+        <!-- Sidebar - Brand -->
+        <a
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+          href="index.html"
+        >
+          <div class="sidebar-brand-icon">
+            <img
+              class="img-profile rounded-circle"
+              src="img/sti-logo.svg"
+              style="width: 54px; height: 51px"
+            />
+          </div>
+          <div class="sidebar-brand-text mx-3">Quantify</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-chart-line"></i>
+            <span>Dashboard</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Product -->
+        <li class="nav-item active">
+          <a class="nav-link" href="product.html">
+            <i class="fas fa-fw fa-tshirt"></i>
+            <span>Products</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Order -->
+        <li class="nav-item">
+          <a class="nav-link" href="order.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Orders</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Inventory -->
+        <li class="nav-item">
+          <a class="nav-link" href="inventory.html">
+            <i class="fas fa-list"></i>
+            <span>Inventory</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Sales -->
+        <li class="nav-item">
+          <a class="nav-link" href="sales.html">
+            <i class="fas fa-money-check"></i>
+            <span>Sales</span></a
+          >
+        </li>
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
+            <!-- Sidebar Toggle (Topbar) -->
+            <button
+              id="sidebarToggleTop"
+              class="btn d-md-none rounded-circle mr-3"
+            >
+              <i class="fa fa-bars dashboard-ham"></i>
+            </button>
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+              <button
+                class="dashboard-ham rounded-circle border-0"
+                id="sidebarToggle"
+              >
+                <i class="fas fa-bars"></i>
+              </button>
+            </div>
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="searchDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                  aria-labelledby="searchDropdown"
+                >
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control bg-light border-0 small"
+                        placeholder="Search for..."
+                        aria-label="Search"
+                        aria-describedby="basic-addon2"
+                      />
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li>
+
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="userDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                    >Admin</span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="img/undraw_profile.svg"
+                  />
+                </a>
+                <!-- Dropdown - User Information -->
+                <div
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="userDropdown"
+                >
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#logoutModal"
+                  >
+                    <i
+                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+                    ></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Best Sellers</h1>
+            </div>
+
+            <!-- Best Seller Product -->
+            <div
+              id="best-sellers-carousel"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#best-sellers-carousel"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#best-sellers-carousel" data-slide-to="1"></li>
+                <!-- Add more indicators for additional items -->
+              </ol>
+
+              <!-- Slides -->
+              <div class="carousel-inner">
+                <!-- Container 1 -->
+                <div class="carousel-item active">
+                  <div class="card-group">
+                    <!-- Sample Product 1 -->
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          BSIT | BSCS | BSCPE Uniform
+                        </h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 12rem; height: 17rem"
+                            src="img/uniform/bsit_bscs_bscpe-uniform.png"
+                            alt="..."
+                          />
+                          <p>Gray 3/4 Polo</p>
+                          <p>₱360.00</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Sample Product 2 -->
+                    <!-- <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          BSTM Uniform
+                        </h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 12rem; height: 16rem"
+                            src="img/uniform/bstm-uniform.png"
+                            alt="..."
+                          />
+                          <p>White Polo</p>
+                          <p>₱360.00</p>
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <!-- Container 2 -->
+                <div class="carousel-item">
+                  <div class="card-group">
+                    <!-- Sample Product 3 -->
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          BSA Uniform
+                        </h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 12rem; height: 17rem"
+                            src="img/uniform/bsa-uniform.png"
+                            alt="..."
+                          />
+                          <p>Light Blue Polo</p>
+                          <p>₱360.00</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Sample Product 4 -->
+                    <!-- <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          BSHM Uniform
+                        </h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 12rem; height: 16rem"
+                            src="img/uniform/bshm-uniform.png"
+                            alt="..."
+                          />
+                          <p>Blazer</p>
+                          <p>₱360.00</p>
+                        </div>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- End of Slides -->
+
+              <!-- Controls -->
+              <a
+                class="carousel-control-prev"
+                href="#best-sellers-carousel"
+                role="button"
+                data-slide="prev"
+                style="color: white"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#best-sellers-carousel"
+                role="button"
+                data-slide="next"
+                style="color: white"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+
+            <!-- Page Subheading -->
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-0"
+            >
+              <h1 class="h3 mb-0 text-gray-800">Products</h1>
+            </div>
+
+            <div
+              class="d-sm-flex align-items-center justify-content-between mb-4"
+            >
+              <div class="w-100">
+                <div class="row justify-content-end mt-4">
+                  <!-- Sort -->
+                  <div class="col-md-3">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="sortSelect"
+                          >Sort by</label
+                        >
+                      </div>
+                      <select class="custom-select" id="sortSelect">
+                        <option value="price-low-to-high">
+                          Price: Low to High
+                        </option>
+                        <option value="price-high-to-low">
+                          Price: High to Low
+                        </option>
+                        <option value="name-a-to-z">Name: A-Z</option>
+                        <option value="name-z-to-a">Name: Z-A</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- Filter -->
+                  <div class="col-md-3">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="combinedFilter"
+                          >Filter by</label
+                        >
+                      </div>
+                      <select class="custom-select" id="combinedFilter">
+                        <option value="all">All Products</option>
+                        <optgroup label="Program">
+                          <option value="program-bsit">
+                            BSIT/BSCS/BSCpE/BSIS
+                          </option>
+                          <option value="program-bstm">BSTM</option>
+                          <option value="program-bshm">BSHM</option>
+                          <option value="program-bshm">
+                            BSBA/BSA/BSAIS/BMMA/BSED
+                          </option>
+                        </optgroup>
+                        <optgroup label="Category">
+                          <option value="category-pants">Pants</option>
+                          <option value="category-blouse">Blouse</option>
+                          <option value="category-polo">Polo</option>
+                          <option value="category-coat">Coat</option>
+                          <option value="category-shirt">Shirt</option>
+                        </optgroup>
+                        <optgroup label="Gender">
+                          <option value="gender-male">Male</option>
+                          <option value="gender-female">Female</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <!-- Search -->
+                    <form
+                      class="mb-4"
+                    >
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control bg-light border-2 small"
+                          placeholder="Search for..."
+                          aria-label="Search"
+                          aria-describedby="basic-addon2"
+                        />
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <!-- Add Button -->
+                <div class="text-right">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-icon-split ml-auto"
+                    data-toggle="modal"
+                    data-target="#addModal"
+                  >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Add</span>
+                  </button>
+                </div>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="addModal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="addModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">
+                          Add New Product
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form id="addForm">
+                          <div class="form-group">
+                            <label for="productName">Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="productName"
+                              placeholder="Enter product name"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="productPrice">Price</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="productPrice"
+                              placeholder="Enter product price"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="productQty">Quantity</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="productQty"
+                              placeholder="Enter product quantity"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="productImage">Image</label>
+                            <input
+                              type="file"
+                              class="form-control-file"
+                              id="productImage"
+                              onchange="previewImage(this)"
+                            />
+                            <img
+                              id="preview"
+                              src=""
+                              alt=""
+                              style="
+                                max-width: 100%;
+                                max-height: 300px;
+                                display: block;
+                                margin: 0 auto;
+                              "
+                            />
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          id="addButtonSubmit"
+                        >
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product -->
+            <div class="container">
+              <div class="row" id="products-container">
+                <!-- Sample Product 1 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div
+                    class="card shadow"
+                    data-toggle="modal"
+                    data-target="#productModal"
+                  >
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Sample Product
+                      </h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img
+                        class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image"
+                        src="img/uniform/bsit_bscs_bscpe-uniform.png"
+                        alt="Gray Pants"
+                      />
+                      <p class="program d-none">BSIT</p>
+                      <p class="category d-none">Pants</p>
+                      <p class="gender d-none">Male</p>
+                      <p class="name">Gray Pants</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sample Product 2 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div
+                    class="card shadow"
+                    data-toggle="modal"
+                    data-target="#productModal"
+                  >
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Sample Product
+                      </h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img
+                        class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image"
+                        src="img/uniform/bstm-uniform.png"
+                        alt="White 3/4 Polo"
+                      />
+                      <p class="program d-none">BSTM</p>
+                      <p class="category d-none">Polo</p>
+                      <p class="gender d-none">Male</p>
+                      <p class="name">White 3/4 Polo</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sample Product 3 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div
+                    class="card shadow"
+                    data-toggle="modal"
+                    data-target="#productModal"
+                  >
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Sample Product
+                      </h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img
+                        class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image"
+                        src="img/uniform/bsa-uniform.png"
+                        alt="White 3/4 Polo"
+                      />
+                      <p class="program d-none">BSA</p>
+                      <p class="category d-none">Polo</p>
+                      <p class="gender d-none">Male</p>
+                      <p class="name">White Long Sleeves</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sample Product 4 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div
+                    class="card shadow"
+                    data-toggle="modal"
+                    data-target="#productModal"
+                  >
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Sample Product
+                      </h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img
+                        class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image"
+                        src="img/uniform/bshm-uniform.png"
+                        alt="White 3/4 Polo"
+                      />
+                      <p class="program d-none">BSHM</p>
+                      <p class="category d-none">Polo</p>
+                      <p class="gender d-none">Female</p>
+                      <p class="name">Gray Long Sleeves</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sample Product 5 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div
+                    class="card shadow"
+                    data-toggle="modal"
+                    data-target="#productModal"
+                  >
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">
+                        Sample Product
+                      </h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img
+                        class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image"
+                        src="img/uniform/bstm-uniform.png"
+                        alt="White 3/4 Polo"
+                      />
+                      <p class="program d-none">BSTM</p>
+                      <p class="category d-none">Coat</p>
+                      <p class="gender d-none">Female</p>
+                      <p class="name">Gray Coat</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination Controls -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center" id="pagination">
+                <li class="page-item">
+                  <a
+                    class="page-link"
+                    href="#"
+                    id="prev-btn"
+                    aria-label="Previous"
+                  >
+                    <span aria-hidden="true">Previous</span>
+                  </a>
+                </li>
+                <!-- Numbered buttons will be inserted here by JavaScript -->
+                <li class="page-item">
+                  <a class="page-link" href="#" id="next-btn" aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+
+        <!-- Modal Product Details -->
+        <div
+          class="modal fade"
+          id="productModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="productModal1Label"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="productModal1Label">
+                  Product Details
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Product details will be displayed here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div
+          class="modal fade"
+          id="productModal1"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="productModalLabel1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel1">
+                  Sample Product
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                <img
+                  class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image"
+                  src="img/uniform/bsit_bscs_bscpe-uniform.png"
+                  alt="Gray Pants"
+                />
+                <p class="program">BSIT</p>
+                <p class="category">Pants</p>
+                <p class="gender">Male</p>
+                <p class="name">Gray Pants</p>
+                <p class="price">₱360.00</p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">Buy Now</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- End of Main Content -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Select "Logout" below if you are ready to end your current session.
+          </div>
+          <div class="modal-footer">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <a class="btn btn-primary" href="homepage.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="js/product/product-pagination.js"></script>
+    <script src="js/product/product-sort-filter.js"></script>
+    <script src="js/product/product-image.js"></script>
+    <script src="js/product/product-details.js"></script>
+
+    <!-- Page level plugins -->
+    <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
+
+    <!-- Page level custom scripts -->
+    <!-- <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script> -->
+  </body>
+</html>
