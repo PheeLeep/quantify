@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Quantify | Dashboard</title>
+    <title>Quantify | Homepage</title>
 
     <!-- Custom fonts for this template-->
     <link
@@ -31,11 +31,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul
-        class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-      >
-        <!-- Sidebar - Brand -->
+      <div id="homepage-sidebar" class="homepage-sidebar">
         <a
           class="sidebar-brand d-flex align-items-center justify-content-center"
           href="index.html"
@@ -47,64 +43,21 @@
               style="width: 54px; height: 51px"
             />
           </div>
-          <div class="sidebar-brand-text mx-3">Quantify</div>
+          <!-- <div class="sidebar-brand-text mx-3">Quantify</div> -->
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0" />
 
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-chart-line"></i>
-            <span>Dashboard</span></a
-          >
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Product -->
-        <li class="nav-item">
-          <a class="nav-link" href="product.html">
-            <i class="fas fa-fw fa-tshirt"></i>
-            <span>Products</span></a
-          >
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Order -->
-        <li class="nav-item">
-          <a class="nav-link" href="order.html">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Orders</span></a
-          >
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Inventory -->
-        <li class="nav-item">
-          <a class="nav-link" href="inventory.html">
-            <i class="fas fa-list"></i>
-            <span>Inventory</span></a
-          >
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Sales -->
-        <li class="nav-item">
-          <a class="nav-link" href="sales.html">
-            <i class="fas fa-money-check"></i>
-            <span>Sales</span></a
-          >
-        </li>
-      </ul>
+        <ul class="sidebar-nav homepage-btn">
+          <li class="nav-item">
+            <a class="nav-link" href="#"> <span>FAQ</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.php"> <span>Login</span></a>
+          </li> 
+        </ul>
+      </div>
       <!-- End of Sidebar -->
 
       <!-- Content Wrapper -->
@@ -112,333 +65,465 @@
         <!-- Main Content -->
         <div id="content">
           <!-- Topbar -->
-          <nav
-            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-          >
+          <nav class="top-navbar navbar navbar-expand shadow sticky-top">
             <!-- Sidebar Toggle (Topbar) -->
             <button
-              id="sidebarToggleTop"
-              class="btn d-md-none rounded-circle mr-3"
+              id="sidebarToggleHomepage"
+              class="btn btn-link d-md-none rounded-circle mr-3"
             >
-              <i class="fa fa-bars dashboard-ham"></i>
+              <i class="fa fa-bars homepage-ham"></i>
             </button>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-              <button
-                class="dashboard-ham rounded-circle border-0"
-                id="sidebarToggle"
+            <!-- Topbar Navbar -->
+            <div class="nav-logo d-none d-md-block">
+              <a
+                class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="index.html"
               >
-                <i class="fas fa-bars"></i>
-              </button>
+                <div class="sidebar-brand-icon">
+                  <img
+                    class="img-profile rounded-circle"
+                    src="img/sti-logo.svg"
+                    style="width: 50px; height: 50px"
+                  />
+                </div>
+                <div class="display-text mx-3">Quantify</div>
+              </a>
             </div>
 
-            <!-- Topbar Navbar -->
-            <ul class="navbar-nav ml-auto">
-              <div class="topbar-divider d-none d-sm-block"></div>
-
-              <!-- Nav Item - User Information -->
-              <li class="nav-item dropdown no-arrow">
+            <ul class="navbar-button navbar-nav ml-auto">
+              <li class="nav-item d-none d-md-block">
+                <a class="nav-link" href="#">Campus Helpdesk</a>
+              </li>
+              <li class="nav-item d-none d-md-block">
+                <a class="nav-link" href="#">FAQ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.php">Login</a>
+              </li>
+              <li class="nav-item dropdown no-arrow mx-1">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
-                  id="userDropdown"
+                  id="alertsDropdown"
                   role="button"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                    >Admin</span
-                  >
-                  <img
-                    class="img-profile rounded-circle"
-                    src="img/undraw_profile.svg"
-                  />
+                  <i class="fas fa-shopping-cart shopping-cart"></i>
+                  <!-- Counter - Alerts -->
+                  <span class="badge badge-danger badge-counter">2</span>
                 </a>
-                <!-- Dropdown - User Information -->
+                <!-- Dropdown - Alerts -->
                 <div
-                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                  aria-labelledby="userDropdown"
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="alertsDropdown"
                 >
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Profile
+                  <h6 class="dropdown-header">Shopping Cart</h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <!-- <div class="mr-3">
+                      <img src="/img/undraw_profile.svg" class="img-thumbnail" style="width: 50px; height: 50px" alt="Product Image" />
+                    </div> -->
+                    <div>
+                      <div>
+                        <strong>BSIT | BSCS | BSCPE | Uniform</strong><br />
+                        Price: P360.00<br />
+                        Quantity: 3
+                      </div>
+                    </div>
                   </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <img
+                        src="/img/undraw_profile_2.svg"
+                        class="img-thumbnail"
+                        style="width: 50px; height: 50px"
+                        alt="Product Image"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <strong>BSA Uniform</strong><br />
+                        Price: P360.00<br />
+                        Quantity: 1
+                      </div>
+                    </div>
                   </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a
-                    class="dropdown-item"
-                    href="#"
-                    data-toggle="modal"
-                    data-target="#logoutModal"
-                  >
-                    <i
-                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
-                    ></i>
-                    Logout
-                  </a>
+                  <div class="dropdown-footer text-center mt-4">
+                    <button class="btn btn-primary">Checkout</button>
+                  </div>
                 </div>
               </li>
             </ul>
           </nav>
           <!-- End of Topbar -->
 
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
+          <div class="container-fluid content-bg">
             <!-- Page Heading -->
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
-              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-              <!-- <a
-                href="#"
-                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
-                ><i class="fas fa-download fa-sm text-white-50"></i> Generate
-                Report
-              </a> -->
+            <div class="d-sm-flex align-items-center justify-content-between p-3">
+              <h1 class="h3 mb-0 text-gray-800">Best Sellers</h1>
             </div>
-
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <a href="product.html" class="sidebar-brand">
-                  <div
-                    class="card border-left-primary shadow h-100 py-2 small-card"
-                  >
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div
-                            class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                          >
-                            Total Products
-                          </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            Quantity: 6
-                          </div>
+          
+            <!-- Best Seller Product -->
+            <div id="best-sellers-carousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#best-sellers-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#best-sellers-carousel" data-slide-to="1"></li>
+              </ol>
+          
+              <!-- Slides -->
+              <div class="carousel-inner">
+                <!-- Container 1 -->
+                <div class="carousel-item active">
+                  <div class="card-group">
+                    <!-- Sample Product 1 -->
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          BSIT | BSCS | BSCPE Uniform
+                        </h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 12rem; height: 17rem"
+                            src="img/uniform/bsit_bscs_bscpe-uniform.png"
+                            alt="..."
+                          />
+                          <p>Gray 3/4 Polo</p>
+                          <p>₱360.00</p>
                         </div>
-                        <div class="col-auto">
-                          <i class="fas fa-fw fa-tshirt fa-2x text-primary"></i>
+                      </div>
+                    </div>
+                    <!-- Sample Product 2 -->
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          BSTM Uniform
+                        </h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 12rem; height: 17rem"
+                            src="img/uniform/bstm-uniform.png"
+                            alt="..."
+                          />
+                          <p>White Polo</p>
+                          <p>₱360.00</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </a>
-              </div>
-
-              <!-- Pending Orders Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <a href="order.html" class="sidebar-brand">
-                  <div
-                    class="card border-left-warning shadow h-100 py-2 small-card"
-                  >
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div
-                            class="text-xs font-weight-bold text-warning text-uppercase mb-1"
-                          >
-                            Pending Orders
-                          </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            Total: 18
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i class="fas fa-hourglass fa-2x text-warning"></i>
+                </div>
+                <!-- Container 2 -->
+                <div class="carousel-item">
+                  <div class="card-group">
+                    <!-- Sample Product 3 -->
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          BSA Uniform
+                        </h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 12rem; height: 17rem"
+                            src="img/uniform/bsa-uniform.png"
+                            alt="..."
+                          />
+                          <p>Light Blue Polo</p>
+                          <p>₱360.00</p>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- Earnings (Monthly) Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <a href="sales.html" class="sidebar-brand">
-                  <div
-                    class="card border-left-success shadow h-100 py-2 small-card"
-                  >
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div
-                            class="text-xs font-weight-bold text-success text-uppercase mb-1"
-                          >
-                            Total Sales
-                          </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            ₱1,000
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i
-                            class="far fa-money-bill-alt fa-2x text-success"
-                          ></i>
+                    <!-- Sample Product 4 -->
+                    <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                          BSHM Uniform
+                        </h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="text-center">
+                          <img
+                            class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                            style="width: 12rem; height: 17rem"
+                            src="img/uniform/bshm-uniform.png"
+                            alt="..."
+                          />
+                          <p>Blazer</p>
+                          <p>₱360.00</p>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-
-              <!-- Critical Stock Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <a href="inventory.html" class="sidebar-brand">
-                  <div
-                    class="card border-left-danger shadow h-100 py-2 small-card"
-                  >
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div
-                            class="text-xs font-weight-bold text-danger text-uppercase mb-1"
-                          >
-                            Critical Stock
-                          </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            Total: 5
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <i
-                            class="fas fa-exclamation-triangle fa-2x text-danger"
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-
-            <!-- Content Row -->
-
-            <div class="row">
-              <!-- Chart -->
-              <div class="col-xl-8 col-lg-7">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-                  >
-                    <h6 class="m-0 font-weight-bold text-primary">Sales</h6>
-                    <div class="dropdown no-arrow">
-                      <a
-                        class="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i
-                          class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
-                        ></i>
-                      </a>
-                      <div
-                        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"
-                          >Something else here</a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <div class="chart-area">
-                      <canvas id="salesGraph"></canvas>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <!-- Pie Chart -->
-              <div class="col-xl-4 col-lg-5">
-                <div class="card shadow mb-4">
-                  <!-- Card Header - Dropdown -->
-                  <div
-                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
-                  >
-                    <h6 class="m-0 font-weight-bold text-primary">
-                      Top Selling Products
-                    </h6>
-                    <div class="dropdown no-arrow">
-                      <a
-                        class="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i
-                          class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"
-                        ></i>
-                      </a>
-                      <div
-                        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"
-                          >Something else here</a
-                        >
+          
+              <!-- Controls -->
+              <a class="carousel-control-prev" href="#best-sellers-carousel" role="button" data-slide="prev" style="color: white">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#best-sellers-carousel" role="button" data-slide="next" style="color: white">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          
+            <!-- Page Subheading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-0">
+              <h1 class="h3 mb-0 text-gray-800">Products</h1>
+            </div>
+          
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <div class="w-100">
+                <div class="row justify-content-end mt-4">
+                  <!-- Sort -->
+                  <div class="col-md-3">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="sortSelect">Sort by</label>
+                      </div>
+                      <select class="custom-select" id="sortSelect">
+                        <option value="price-low-to-high">Price: Low to High</option>
+                        <option value="price-high-to-low">Price: High to Low</option>
+                        <option value="name-a-to-z">Name: A-Z</option>
+                        <option value="name-z-to-a">Name: Z-A</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- Filter -->
+                  <div class="col-md-3">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="combinedFilter">Filter by</label>
+                      </div>
+                      <select class="custom-select" id="combinedFilter">
+                        <option value="all">All Products</option>
+                        <optgroup label="Program">
+                          <option value="program-bsit">BSIT/BSCS/BSCpE/BSIS</option>
+                          <option value="program-bstm">BSTM</option>
+                          <option value="program-bshm">BSHM</option>
+                          <option value="program-bshm">BSBA/BSA/BSAIS/BMMA/BSED</option>
+                        </optgroup>
+                        <optgroup label="Category">
+                          <option value="category-pants">Pants</option>
+                          <option value="category-blouse">Blouse</option>
+                          <option value="category-polo">Polo</option>
+                          <option value="category-coat">Coat</option>
+                          <option value="category-shirt">Shirt</option>
+                        </optgroup>
+                        <optgroup label="Gender">
+                          <option value="gender-male">Male</option>
+                          <option value="gender-female">Female</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <!-- Search -->
+                    <form class="mb-4">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control bg-light border-2 small"
+                          placeholder="Search for..."
+                          aria-label="Search"
+                          aria-describedby="basic-addon2"
+                        />
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Product -->
+            <div class="container">
+              <div class="row" id="products-container">
+                <!-- Sample Product 1 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bsit_bscs_bscpe-uniform.png" alt="Gray Pants" />
+                      <p class="program d-none">BSIT</p>
+                      <p class="category d-none">Pants</p>
+                      <p class="gender d-none">Male</p>
+                      <p class="name">Gray Pants</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- Sample Product 2 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bstm-uniform.png" alt="White 3/4 Polo" />
+                      <p class="program d-none">BSTM</p>
+                      <p class="category d-none">Polo</p>
+                      <p class="gender d-none">Male</p>
+                      <p class="name">White 3/4 Polo</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- Sample Product 3 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bsa-uniform.png" alt="White 3/4 Polo" />
+                      <p class="program d-none">BSA</p>
+                      <p class="category d-none">Polo</p>
+                      <p class="gender d-none">Male</p>
+                      <p class="name">White Long Sleeves</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- Sample Product 4 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bshm-uniform.png" alt="White 3/4 Polo" />
+                      <p class="program d-none">BSHM</p>
+                      <p class="category d-none">Polo</p>
+                      <p class="gender d-none">Female</p>
+                      <p class="name">Gray Long Sleeves</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+          
+                <!-- Sample Product 5 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
+                    <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
+                    </div>
+                    <div class="card-body text-center">
+                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bstm-uniform.png" alt="White 3/4 Polo" />
+                      <p class="program d-none">BSTM</p>
+                      <p class="category d-none">Coat</p>
+                      <p class="gender d-none">Female</p>
+                      <p class="name">Gray Coat</p>
+                      <p class="price">₱360.00</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Pagination Controls -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center" id="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#" id="prev-btn" aria-label="Previous">
+                    <span aria-hidden="true">Previous</span>
+                  </a>
+                </li>
+                <!-- Numbered buttons will be inserted here by JavaScript -->
+                <li class="page-item">
+                  <a class="page-link" href="#" id="next-btn" aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          
+            <!-- Content Row -->
+            <div class="row"></div>
+          </div>
+          
+          <!-- Product Detail Modal -->
+          <div class="modal fade" id="productDetailModal" tabindex="-1" role="dialog" aria-labelledby="productDetailModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="productDetailModalLabel">Product Details</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-5">
+                        <img id="modal-product-image" class="img-fluid" src="" alt="Product Image" />
+                      </div>
+                      <div class="col-md-7">
+                        <h3 id="modal-product-name"></h3>
+                        <p id="modal-product-price"></p>
+                        <p id="modal-product-description"></p>
+                        <form>
+                          <div class="form-group">
+                            <label for="product-size">Size</label>
+                            <select class="form-control" id="product-size">
+                              <option>Small</option>
+                              <option>Medium</option>
+                              <option>Large</option>
+                              <option>Extra Large</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="product-quantity">Quantity</label>
+                            <input type="number" class="form-control" id="product-quantity" min="1" value="1" />
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
-                  <!-- Card Body -->
-                  <div class="card-body">
-                    <div class="chart-pie pt-4 pb-2">
-                      <canvas id="topSellerProducts"></canvas>
-                    </div>
-                    <div class="mt-4 text-center small">
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-primary"></i> Gray 3/4 Polo
-                      </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i> White 3/4
-                        Polo
-                      </span>
-                    </div>
-                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Add to Cart</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- /.container-fluid -->
+          
+          <script>
+            document.querySelectorAll('.product-card').forEach(card => {
+              card.addEventListener('click', function() {
+                const productName = this.querySelector('.name').innerText;
+                const productPrice = this.querySelector('.price').innerText;
+                const productImage = this.querySelector('.product-image').src;
+          
+                document.getElementById('modal-product-name').innerText = productName;
+                document.getElementById('modal-product-price').innerText = productPrice;
+                document.getElementById('modal-product-image').src = productImage;
+              });
+            });
+          </script>
         </div>
         <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <!-- <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2021</span>
-            </div>
-          </div>
-        </footer> -->
-        <!-- End of Footer -->
       </div>
       <!-- End of Content Wrapper -->
     </div>
@@ -449,45 +534,6 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
-    <div
-      class="modal fade"
-      id="logoutModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button
-              class="close"
-              type="button"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Select "Logout" below if you are ready to end your current session.
-          </div>
-          <div class="modal-footer">
-            <button
-              class="btn btn-secondary"
-              type="button"
-              data-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <a class="btn btn-primary" href="homepage.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -496,13 +542,11 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/product/product-pagination.js"></script>
+    <script src="js/product/product-sort-filter.js"></script>
+    <script src="js/product/product-image.js"></script>
+    <script src="js/product/product-details.js"></script>
   </body>
 </html>
