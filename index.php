@@ -1,3 +1,32 @@
+<?php
+session_start();
+// Database connection
+$conn = new mysqli("localhost", "root", "", "quantify");
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+//populating products
+$sql = "SELECT p.*, c.Category_Name 
+        FROM Product p
+        LEFT JOIN Category c ON p.Category_ID = c.Category_ID";
+$result = $conn->query($sql);
+
+// Check if cart ID exists in session, if not create new cart
+if (!isset($_SESSION['cartId'])) {
+  $cartId = uniqid('cart_');
+  $_SESSION['cartId'] = $cartId;
+  $dateCreated = date('Y-m-d H:i:s');
+
+  // Insert new cart into database
+  $sql = "INSERT INTO cart (Cart_ID, Date_Created) VALUES ('$cartId', '$dateCreated')";
+  if ($conn->query($sql) !== TRUE) {
+      die("Error creating cart: " . $conn->error);
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +51,7 @@
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet"
     />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.css" rel="stylesheet" />
   </head>
@@ -34,7 +63,7 @@
       <div id="homepage-sidebar" class="homepage-sidebar">
         <a
           class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="index.html"
+          href="index.php"
         >
           <div class="sidebar-brand-icon">
             <img
@@ -78,7 +107,7 @@
             <div class="nav-logo d-none d-md-block">
               <a
                 class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="index.html"
+                href="index.php"
               >
                 <div class="sidebar-brand-icon">
                   <img
@@ -351,95 +380,34 @@
               </div>
             </div>
           
-            <!-- Product -->
+             <!-- Product -->
             <div class="container">
               <div class="row" id="products-container">
-                <!-- Sample Product 1 -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
-                    <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
-                    </div>
-                    <div class="card-body text-center">
-                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bsit_bscs_bscpe-uniform.png" alt="Gray Pants" />
-                      <p class="program d-none">BSIT</p>
-                      <p class="category d-none">Pants</p>
-                      <p class="gender d-none">Male</p>
-                      <p class="name">Gray Pants</p>
-                      <p class="price">₱360.00</p>
-                    </div>
-                  </div>
-                </div>
-          
-                <!-- Sample Product 2 -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
-                    <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
-                    </div>
-                    <div class="card-body text-center">
-                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bstm-uniform.png" alt="White 3/4 Polo" />
-                      <p class="program d-none">BSTM</p>
-                      <p class="category d-none">Polo</p>
-                      <p class="gender d-none">Male</p>
-                      <p class="name">White 3/4 Polo</p>
-                      <p class="price">₱360.00</p>
-                    </div>
-                  </div>
-                </div>
-          
-                <!-- Sample Product 3 -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
-                    <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
-                    </div>
-                    <div class="card-body text-center">
-                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bsa-uniform.png" alt="White 3/4 Polo" />
-                      <p class="program d-none">BSA</p>
-                      <p class="category d-none">Polo</p>
-                      <p class="gender d-none">Male</p>
-                      <p class="name">White Long Sleeves</p>
-                      <p class="price">₱360.00</p>
-                    </div>
-                  </div>
-                </div>
-          
-                <!-- Sample Product 4 -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
-                    <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
-                    </div>
-                    <div class="card-body text-center">
-                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bshm-uniform.png" alt="White 3/4 Polo" />
-                      <p class="program d-none">BSHM</p>
-                      <p class="category d-none">Polo</p>
-                      <p class="gender d-none">Female</p>
-                      <p class="name">Gray Long Sleeves</p>
-                      <p class="price">₱360.00</p>
-                    </div>
-                  </div>
-                </div>
-          
-                <!-- Sample Product 5 -->
-                <div class="col-lg-3 col-md-6 mb-4">
-                  <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
-                    <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Sample Product</h6>
-                    </div>
-                    <div class="card-body text-center">
-                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bstm-uniform.png" alt="White 3/4 Polo" />
-                      <p class="program d-none">BSTM</p>
-                      <p class="category d-none">Coat</p>
-                      <p class="gender d-none">Female</p>
-                      <p class="name">Gray Coat</p>
-                      <p class="price">₱360.00</p>
-                    </div>
-                  </div>
-                </div>
+                  <?php if ($result->num_rows > 0) {
+                      while($row = $result->fetch_assoc()) { ?>
+                          <div class="col-lg-3 col-md-6 mb-4">
+                              <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
+                                  <div class="card-header py-3">
+                                      <h6 class="m-0 font-weight-bold text-primary"><?php echo $row['Category_Name']; ?></h6>
+                                  </div>
+                                  <div class="card-body text-center">
+                                      <!-- Keeping static images for the products -->
+                                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bstm-uniform.png" alt="White 3/4 Polo" />
+                                      <p class="program d-none">BSTM</p>
+                                      <p class="category d-none"><?php echo $row['Category_ID']; ?></p>
+                                      <p class="gender d-none">Female</p>
+                                      <p class="name"><?php echo $row['Name']; ?></p>
+                                      <p class="price">₱<?php echo $row['Price']; ?></p>
+                                      <p class="description d-none"><?php echo $row['Description']; ?></p>
+                                  </div>
+                              </div>
+                          </div>
+                  <?php } } else { ?>
+                      <p>No products found</p>
+                  <?php } ?>
               </div>
-            </div>
+          </div>
+
           
             <!-- Pagination Controls -->
             <nav aria-label="Page navigation example">
@@ -462,66 +430,70 @@
             <div class="row"></div>
           </div>
           
-          <!-- Product Detail Modal -->
+        <!-- Product Detail Modal -->
           <div class="modal fade" id="productDetailModal" tabindex="-1" role="dialog" aria-labelledby="productDetailModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="productDetailModalLabel">Product Details</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="container-fluid">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <img id="modal-product-image" class="img-fluid" src="" alt="Product Image" />
+              <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                              <h5 class="modal-title" id="productDetailModalLabel">Product Details</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                                </button>
+                                    </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                              <div class="row">
+                                                <div class="col-md-5">
+                                                <img id="modal-product-image" class="img-fluid" src="" alt="Product Image" />
+                                                </div>
+                                                <div class="col-md-7">
+                                                <h3 id="modal-product-name"></h3>
+                                                <p id="modal-product-price"></p>
+                                                <p id="modal-product-description"></p>
+                                              <form>
+                                                <div class="form-group">
+                                                <label for="product-size">Size</label>
+                                                <select class="form-control" id="product-size">
+                                                <option>Small</option>
+                                                <option>Medium</option>
+                                                <option>Large</option>
+                                                <option>Extra Large</option>
+                                                </select>
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="product-quantity">Quantity</label>
+                                                <input type="number" class="form-control" id="product-quantity" min="1" value="1" />
+                                                </div>
+                                              </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary" id= "add-to-cart">Add to Cart</button>
                       </div>
-                      <div class="col-md-7">
-                        <h3 id="modal-product-name"></h3>
-                        <p id="modal-product-price"></p>
-                        <p id="modal-product-description"></p>
-                        <form>
-                          <div class="form-group">
-                            <label for="product-size">Size</label>
-                            <select class="form-control" id="product-size">
-                              <option>Small</option>
-                              <option>Medium</option>
-                              <option>Large</option>
-                              <option>Extra Large</option>
-                            </select>
-                          </div>
-                          <div class="form-group">
-                            <label for="product-quantity">Quantity</label>
-                            <input type="number" class="form-control" id="product-quantity" min="1" value="1" />
-                          </div>
-                        </form>
-                      </div>
-                    </div>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Add to Cart</button>
-                </div>
               </div>
-            </div>
           </div>
           
-          <script>
-            document.querySelectorAll('.product-card').forEach(card => {
-              card.addEventListener('click', function() {
-                const productName = this.querySelector('.name').innerText;
-                const productPrice = this.querySelector('.price').innerText;
-                const productImage = this.querySelector('.product-image').src;
+
           
-                document.getElementById('modal-product-name').innerText = productName;
-                document.getElementById('modal-product-price').innerText = productPrice;
-                document.getElementById('modal-product-image').src = productImage;
-              });
-            });
-          </script>
+      <script>
+             document.querySelectorAll('.product-card').forEach(card => {
+          card.addEventListener('click', function() {
+            const productName = this.querySelector('.name').innerText;
+            const productPrice = this.querySelector('.price').innerText;
+            const productImage = this.querySelector('.product-image').src;
+            const productDescription = this.querySelector('.description').innerText;
+      
+            document.getElementById('modal-product-name').innerText = productName;
+            document.getElementById('modal-product-price').innerText = productPrice;
+            document.getElementById('modal-product-image').src = productImage;
+            document.getElementById('modal-product-description').innerText = productDescription; 
+          });
+        });
+      </script>
         </div>
         <!-- End of Main Content -->
       </div>
@@ -548,5 +520,12 @@
     <script src="js/product/product-sort-filter.js"></script>
     <script src="js/product/product-image.js"></script>
     <script src="js/product/product-details.js"></script>
+
+    
   </body>
 </html>
+
+<?php
+// Close connection
+$conn->close();
+?>

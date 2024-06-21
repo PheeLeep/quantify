@@ -42,7 +42,7 @@
                   <div class="p-5">
                     <div class="text-left">
                       <a
-                        href="index.html"
+                        href="index.php"
                         class="btn btn-link text-decoration-none mb-4"
                         id="backButton"
                       >
