@@ -7,54 +7,24 @@ $conn = new mysqli("localhost", "root", "", "quantify");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+//populating products
+$sql = "SELECT p.*, c.Category_Name 
+        FROM Product p
+        LEFT JOIN Category c ON p.Category_ID = c.Category_ID";
+$result = $conn->query($sql);
 
 // Check if cart ID exists in session, if not create new cart
 if (!isset($_SESSION['cartId'])) {
-    $cartId = uniqid('cart_');
-    $_SESSION['cartId'] = $cartId;
-    $dateCreated = date('Y-m-d H:i:s');
+  $cartId = uniqid('cart_');
+  $_SESSION['cartId'] = $cartId;
+  $dateCreated = date('Y-m-d H:i:s');
 
-    // Insert new cart into database
-    $sql = "INSERT INTO cart (Cart_ID, Date_Created) VALUES ('$cartId', '$dateCreated')";
-    if ($conn->query($sql) !== TRUE) {
-        die("Error creating cart: " . $conn->error);
-    } else {
-    }
-} else {
-  
-}
-
-// Handle adding product to cart
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['productName'])) {
-  $productName = $_POST['productName'];
-  $quantity = $_POST['quantity'];
-
-  // Check if the cart ID exists in the cart table
-  $cartId = $_SESSION['cartId'];
-  $checkCartSql = "SELECT Cart_ID FROM cart WHERE Cart_ID = '$cartId'";
-  $checkCartResult = $conn->query($checkCartSql);
-
-  if ($checkCartResult->num_rows > 0) {
-      // Cart ID exists, proceed to insert into cartitem
-      $cartItemId = uniqid('cartitem_');
-      $insertCartItemSql = "INSERT INTO cartitem (CartItemID, Cart_ID, Product_Name, Quantity) VALUES ('$cartItemId', '$cartId', '$productName', $quantity)";
-      if ($conn->query($insertCartItemSql) !== TRUE) {
-          die("Error adding product to cart: " . $conn->error);
-      } else {
-      }
-  } else {
-      die("Error: Cart ID '$cartId' does not exist in the database");
+  // Insert new cart into database
+  $sql = "INSERT INTO cart (Cart_ID, Date_Created) VALUES ('$cartId', '$dateCreated')";
+  if ($conn->query($sql) !== TRUE) {
+      die("Error creating cart: " . $conn->error);
   }
 }
-$cartItemsSql = "SELECT * FROM cartitem WHERE Cart_ID = '$cartId'";
-$cartItemsResult = $conn->query($cartItemsSql);
-
-
-
-// Populating products
-$sql = "SELECT p.*, c.Category_Name FROM product p LEFT JOIN category c ON p.Category_ID = c.Category_ID";
-$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +63,7 @@ $result = $conn->query($sql);
       <div id="homepage-sidebar" class="homepage-sidebar">
         <a
           class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="index.html"
+          href="index.php"
         >
           <div class="sidebar-brand-icon">
             <img
@@ -137,7 +107,7 @@ $result = $conn->query($sql);
             <div class="nav-logo d-none d-md-block">
               <a
                 class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="index.html"
+                href="index.php"
               >
                 <div class="sidebar-brand-icon">
                   <img
@@ -161,84 +131,61 @@ $result = $conn->query($sql);
                 <a class="nav-link" href="login.php">Login</a>
               </li>
               <li class="nav-item dropdown no-arrow mx-1">
-                <button
-                  class="nav-link btn btn-link dropdown-toggle"
-                  type="button"
-                  data-toggle="modal"
-                  data-target="#cartModal"
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="alertsDropdown"
+                  role="button"
+                  data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
                   <i class="fas fa-shopping-cart shopping-cart"></i>
-                </button>
+                  <!-- Counter - Alerts -->
+                  <span class="badge badge-danger badge-counter">2</span>
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div
+                  class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="alertsDropdown"
+                >
+                  <h6 class="dropdown-header">Shopping Cart</h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <!-- <div class="mr-3">
+                      <img src="/img/undraw_profile.svg" class="img-thumbnail" style="width: 50px; height: 50px" alt="Product Image" />
+                    </div> -->
+                    <div>
+                      <div>
+                        <strong>BSIT | BSCS | BSCPE | Uniform</strong><br />
+                        Price: P360.00<br />
+                        Quantity: 3
+                      </div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <img
+                        src="/img/undraw_profile_2.svg"
+                        class="img-thumbnail"
+                        style="width: 50px; height: 50px"
+                        alt="Product Image"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <strong>BSA Uniform</strong><br />
+                        Price: P360.00<br />
+                        Quantity: 1
+                      </div>
+                    </div>
+                  </a>
+                  <div class="dropdown-footer text-center mt-4">
+                    <button class="btn btn-primary">Checkout</button>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
-           <!-- Cart Modal -->
-            <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="row" id="cartItemsContainer">
-                                    <?php
-                                    if ($cartItemsResult->num_rows > 0) {
-                                        while ($row = $cartItemsResult->fetch_assoc()) {
-                                            echo '<div class="col-12 mb-3">';
-                                            echo '<div class="card">';
-                                            echo '<div class="card-body">';
-                                            echo '<h5 class="card-title">' . $row['Product_Name'] . '</h5>';
-                                            echo '<p class="card-text">Quantity: ' . $row['Quantity'] . '</p>';
-                                            // Add a remove button for each cart item
-                                            echo '<button class="btn btn-danger remove-item-btn" data-cartitemid="' . $row['CartItemID'] . '">Remove</button>';
-                                            echo '</div>';
-                                            echo '</div>';
-                                            echo '</div>';
-                                        }
-                                    } else {
-                                        echo '<p>No items in cart</p>';
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary">Checkout</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    <!-- End of Cart Modal -->
-    <script>
-        $(document).ready(function() {
-            // Remove item button click handler
-            $('.remove-item-btn').click(function() {
-                var cartItemId = $(this).data('cartitemid');
-                // Perform AJAX request to remove item from cartitem table
-                $.ajax({
-                    type: 'POST',
-                    url: 'remove_from_cart.php', // Create this file to handle removal
-                    data: { cartItemId: cartItemId },
-                    success: function(response) {
-                        // Handle success, such as updating the modal or page
-                        // For now, you can reload the modal to reflect changes
-                        $('#cartModal').modal('show'); // Reload modal
-                    },
-                    error: function(xhr, status, error) {
-                        console.error(xhr.responseText);
-                        alert('Error removing item from cart.');
-                    }
-                });
-            });
-        });
-    </script>
           <!-- End of Topbar -->
 
           <div class="container-fluid content-bg">
@@ -433,32 +380,34 @@ $result = $conn->query($sql);
               </div>
             </div>
           
-            <!-- Product -->
+             <!-- Product -->
             <div class="container">
-                        <div class="row" id="products-container">
-                            <?php if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) { ?>
-                                    <div class="col-lg-3 col-md-6 mb-4">
-                                        <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
-                                            <div class="card-header py-3">
-                                                <h6 class="m-0 font-weight-bold text-primary"><?php echo $row['Category_Name']; ?></h6>
-                                            </div>
-                                            <div class="card-body text-center">
-                                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bstm-uniform.png" alt="White 3/4 Polo" />
-                                                <p class="program d-none">BSTM</p>
-                                                <p class="category d-none"><?php echo $row['Category_ID']; ?></p>
-                                                <p class="gender d-none">Female</p>
-                                                <p class="name"><?php echo $row['Name']; ?></p>
-                                                <p class="price">₱<?php echo $row['Price']; ?></p>
-                                                <p class="description d-none"><?php echo $row['Description']; ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                            <?php } } else { ?>
-                                <p>No products found</p>
-                            <?php } ?>
-                        </div>
-                    </div>
+              <div class="row" id="products-container">
+                  <?php if ($result->num_rows > 0) {
+                      while($row = $result->fetch_assoc()) { ?>
+                          <div class="col-lg-3 col-md-6 mb-4">
+                              <div class="card shadow product-card" data-toggle="modal" data-target="#productDetailModal">
+                                  <div class="card-header py-3">
+                                      <h6 class="m-0 font-weight-bold text-primary"><?php echo $row['Category_Name']; ?></h6>
+                                  </div>
+                                  <div class="card-body text-center">
+                                      <!-- Keeping static images for the products -->
+                                      <img class="img-fluid px-3 px-sm-4 mt-3 mb-4 product-image" src="img/uniform/bstm-uniform.png" alt="White 3/4 Polo" />
+                                      <p class="program d-none">BSTM</p>
+                                      <p class="category d-none"><?php echo $row['Category_ID']; ?></p>
+                                      <p class="gender d-none">Female</p>
+                                      <p class="name"><?php echo $row['Name']; ?></p>
+                                      <p class="price">₱<?php echo $row['Price']; ?></p>
+                                      <p class="description d-none"><?php echo $row['Description']; ?></p>
+                                  </div>
+                              </div>
+                          </div>
+                  <?php } } else { ?>
+                      <p>No products found</p>
+                  <?php } ?>
+              </div>
+          </div>
+
           
             <!-- Pagination Controls -->
             <nav aria-label="Page navigation example">
@@ -481,58 +430,69 @@ $result = $conn->query($sql);
             <div class="row"></div>
           </div>
           
-       <!-- Product Detail Modal -->
-       <div class="modal fade" id="productDetailModal" tabindex="-1" role="dialog" aria-labelledby="productDetailModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="productDetailModalLabel">Product Details</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-5">
+        <!-- Product Detail Modal -->
+          <div class="modal fade" id="productDetailModal" tabindex="-1" role="dialog" aria-labelledby="productDetailModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                              <h5 class="modal-title" id="productDetailModalLabel">Product Details</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                                </button>
+                                    </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                              <div class="row">
+                                                <div class="col-md-5">
                                                 <img id="modal-product-image" class="img-fluid" src="" alt="Product Image" />
-                                            </div>
-                                            <div class="col-md-7">
+                                                </div>
+                                                <div class="col-md-7">
                                                 <h3 id="modal-product-name"></h3>
                                                 <p id="modal-product-price"></p>
                                                 <p id="modal-product-description"></p>
-                                                <form id="add-to-cart-form" method="post" action="">
-                                                    <div class="form-group">
-                                                        <label for="product-quantity">Quantity</label>
-                                                        <input type="number" class="form-control" name="quantity" id="product-quantity" min="1" value="1" />
-                                                        <input type="hidden" name="productName" id="modal-product-name-hidden" value="" />
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary">Add to Cart</button>
-                                                </form>
+                                              <form>
+                                                <div class="form-group">
+                                                <label for="product-size">Size</label>
+                                                <select class="form-control" id="product-size">
+                                                <option>Small</option>
+                                                <option>Medium</option>
+                                                <option>Large</option>
+                                                <option>Extra Large</option>
+                                                </select>
+                                                </div>
+                                                <div class="form-group">
+                                                <label for="product-quantity">Quantity</label>
+                                                <input type="number" class="form-control" id="product-quantity" min="1" value="1" />
+                                                </div>
+                                              </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End of Product Detail Modal -->
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary" id= "add-to-cart">Add to Cart</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
 
-          <!-- Product Detail Script -->
+          
       <script>
-           $(document).ready(function() {
-                $('.product-card').on('click', function() {
-                    var card = $(this);
-                    $('#modal-product-name').text(card.find('.name').text());
-                    $('#modal-product-price').text(card.find('.price').text());
-                    $('#modal-product-description').text(card.find('.description').text());
-                    $('#modal-product-image').attr('src', card.find('.product-image').attr('src'));
-                    $('#modal-product-name-hidden').val(card.find('.name').text());
-                });
-            });
+             document.querySelectorAll('.product-card').forEach(card => {
+          card.addEventListener('click', function() {
+            const productName = this.querySelector('.name').innerText;
+            const productPrice = this.querySelector('.price').innerText;
+            const productImage = this.querySelector('.product-image').src;
+            const productDescription = this.querySelector('.description').innerText;
+      
+            document.getElementById('modal-product-name').innerText = productName;
+            document.getElementById('modal-product-price').innerText = productPrice;
+            document.getElementById('modal-product-image').src = productImage;
+            document.getElementById('modal-product-description').innerText = productDescription; 
+          });
+        });
       </script>
         </div>
         <!-- End of Main Content -->

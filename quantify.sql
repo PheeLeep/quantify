@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2024 at 12:56 PM
+-- Generation Time: Jun 21, 2024 at 09:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -51,6 +51,17 @@ CREATE TABLE `cart` (
   `Date_Created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`Cart_ID`, `Date_Created`) VALUES
+('cart_6674e198ae8a0', '2024-06-21 04:12:40'),
+('cart_6674f970ea903', '2024-06-21 05:54:24'),
+('cart_667524686e0dc', '2024-06-21 08:57:44'),
+('cart_66752579e2ea1', '2024-06-21 09:02:17'),
+('cart_66752dd00ee5e', '2024-06-21 09:37:52');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +75,14 @@ CREATE TABLE `cartitem` (
   `Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cartitem`
+--
+
+INSERT INTO `cartitem` (`CartItemID`, `Cart_ID`, `Product_Name`, `Quantity`) VALUES
+('cartitem_66752f629ce04', 'cart_66752dd00ee5e', 'Gray Coat', 1),
+('cartitem_66752fb9d02a9', 'cart_66752dd00ee5e', 'Gray Coat', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +93,13 @@ CREATE TABLE `category` (
   `Category_ID` int(11) NOT NULL,
   `Category_Name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`Category_ID`, `Category_Name`) VALUES
+(0, 'Coat');
 
 -- --------------------------------------------------------
 
@@ -102,6 +128,17 @@ CREATE TABLE `product` (
   `Price` decimal(10,0) NOT NULL,
   `Category_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`Product_ID`, `Name`, `Description`, `Price`, `Category_ID`) VALUES
+('1', 'Gray Coat', 'A coat used by BSTM.', 150, 0),
+('2', 'Blazer', 'afwdfgsadfa', 150, 0),
+('3', 'Polo Shirt', 'asdasdasdfasdfa', 125, 0),
+('4', 'Cap', 'gdbfghjmffdsasdgdgv', 150, 0),
+('5', 'Gray Jacket', 'dn bfdsdfsnbfg', 150, 0);
 
 -- --------------------------------------------------------
 
@@ -165,29 +202,6 @@ ALTER TABLE `product`
 ALTER TABLE `stockup`
   ADD KEY `FK_StockUp_Product` (`Product_ID`),
   ADD KEY `StockID` (`StockID`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `cartitem`
---
-ALTER TABLE `cartitem`
-  ADD CONSTRAINT `FK_CartItem_ID` FOREIGN KEY (`CartItemID`) REFERENCES `cart` (`Cart_ID`),
-  ADD CONSTRAINT `FK_CartItem_Product` FOREIGN KEY (`Product_Name`) REFERENCES `product` (`Product_ID`);
-
---
--- Constraints for table `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `FK_Product_CategoryID` FOREIGN KEY (`Category_ID`) REFERENCES `category` (`Category_ID`);
-
---
--- Constraints for table `stockup`
---
-ALTER TABLE `stockup`
-  ADD CONSTRAINT `FK_StockUp_Product` FOREIGN KEY (`Product_ID`) REFERENCES `product` (`Product_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
